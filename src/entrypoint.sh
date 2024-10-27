@@ -33,9 +33,12 @@ echo "dns_cloudflare_api_token = $CLOUDFLARE_API_TOKEN" > /cloudflare.ini
 # Function to run certbot with provided arguments
 run_certbot() {
     command="certbot certonly --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini"
-
-    for domain in ${CERTBOT_DOMAIN//,/ }; do
-      command+=" -d $domain"
+    
+    IN="$CERTBOT_DOMAIN"
+    while [ "$IN" != "$iter" ] ;do
+        iter=${IN%%,*}
+        IN="${IN#$iter,}"
+        command+=" -d $domain"
     done
 
     command += "--key-type $CERTBOT_KEY_TYPE --email $CERTBOT_EMAIL --agree-tos --non-interactive"
