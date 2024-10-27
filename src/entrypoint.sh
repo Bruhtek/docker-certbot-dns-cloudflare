@@ -41,7 +41,7 @@ run_certbot() {
         command="$command -d $domain"
     done
 
-    command = "$command --key-type $CERTBOT_KEY_TYPE --email $CERTBOT_EMAIL --agree-tos --non-interactive"
+    command="$command --key-type $CERTBOT_KEY_TYPE --email $CERTBOT_EMAIL --agree-tos --non-interactive"
 
     eval $command
     exit_code=$?
