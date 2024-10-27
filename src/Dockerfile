@@ -1,4 +1,5 @@
 FROM certbot/dns-cloudflare:latest
+LABEL org.opencontainers.image.source="https://github.com/Bruhtek/docker-certbot-dns-cloudflare"
 
 ENV CERTBOT_DOMAIN="" \
     CERTBOT_EMAIL="" \
