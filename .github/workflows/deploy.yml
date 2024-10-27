@@ -22,5 +22,5 @@ jobs:
 
           - name: 'Build Inventory Image'
             run: |
-              docker build . --tag ghcr.io/Bruhtek/docker-certbot-dns-cloudflare:latest
-              docker push ghcr.io/Bruhtek/docker-certbot-dns-cloudflare:latest
+              docker build . --tag ghcr.io/bruhtek/docker-certbot-dns-cloudflare:latest
+              docker push ghcr.io/bruhtek/docker-certbot-dns-cloudflare:latest
