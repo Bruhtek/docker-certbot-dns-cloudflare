@@ -38,10 +38,10 @@ run_certbot() {
     while [ "$IN" != "$iter" ] ;do
         iter=${IN%%,*}
         IN="${IN#$iter,}"
-        command+=" -d $domain"
+        command="$command -d $domain"
     done
 
-    command += "--key-type $CERTBOT_KEY_TYPE --email $CERTBOT_EMAIL --agree-tos --non-interactive"
+    command = "$command --key-type $CERTBOT_KEY_TYPE --email $CERTBOT_EMAIL --agree-tos --non-interactive"
 
     eval $command
     exit_code=$?
