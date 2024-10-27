@@ -1,3 +1,6 @@
+# Forked
+This is a fork of [**serversideup/certbot-dns-cloudflare**](https://serversideup/docker-certbot-dns-cloudflare). It includes the ability to use multiple domains, just separate them with a comma `,`.
+
 <p align="center">
 		<img src="https://raw.githubusercontent.com/serversideup/docker-certbot-dns-cloudflare/main/.github/header.png" width="1200" alt="Docker Images Logo">
 </p>
@@ -32,7 +35,7 @@ The following environment variables can be used to customize the Certbot contain
 
 | Variable | Description | Default Value |
 |----------|-------------|---------------|
-| `CERTBOT_DOMAIN` | Domain for which to obtain the certificate | - |
+| `CERTBOT_DOMAIN` | Domain(s) for which to obtain the certificate - if using multiple, separate them with a comma, like `example.com,*.example.com` | - |
 | `CERTBOT_EMAIL` | Email address for Let's Encrypt notifications | - |
 | `CERTBOT_KEY_TYPE` | Type of private key to generate | `ecdsa` |
 | `CLOUDFLARE_API_TOKEN` | Cloudflare API token for DNS authentication | - |
