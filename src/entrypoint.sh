@@ -32,14 +32,15 @@ echo "dns_cloudflare_api_token = $CLOUDFLARE_API_TOKEN" > /cloudflare.ini
 
 # Function to run certbot with provided arguments
 run_certbot() {
-    certbot certonly \
-        --dns-cloudflare \
-        --dns-cloudflare-credentials /cloudflare.ini \
-        -d "$CERTBOT_DOMAIN" \
-        --key-type "$CERTBOT_KEY_TYPE" \
-        --email "$CERTBOT_EMAIL" \
-        --agree-tos \
-        --non-interactive
+    command="certbot certonly --dns-cloudflare --dns-cloudflare-credentials /cloudflare.ini"
+
+    for domain in ${CERTBOT_DOMAIN//,/ }; do
+      command+=" -d $domain"
+    done
+
+    command += "--key-type $CERTBOT_KEY_TYPE --email $CERTBOT_EMAIL --agree-tos --non-interactive"
+
+    eval $command
     exit_code=$?
     if [ $exit_code -ne 0 ]; then
         echo "Error: certbot command failed with exit code $exit_code"
